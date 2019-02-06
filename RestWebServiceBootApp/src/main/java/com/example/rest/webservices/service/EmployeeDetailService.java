@@ -2,9 +2,13 @@ package com.example.rest.webservices.service;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+
 import org.springframework.stereotype.Component;
+
 import com.example.rest.webservices.dto.Employee;
+import com.example.rest.webservices.exceptions.UserNotFoundException;
 
 @Component
 public class EmployeeDetailService {
@@ -37,7 +41,7 @@ public class EmployeeDetailService {
 				}
 			}
 		}
-		return null;	
+		throw new UserNotFoundException("User Not Found");	
 	}
 	
 	//POST - ADD DETAILS OF AN EMPLOYEE
@@ -49,5 +53,19 @@ public class EmployeeDetailService {
 			return null;
 		}
 		return e;
+	}
+
+	//DELETE EMPLOYEE
+	public Employee deleteEmployee(String id) {
+		Iterator<Employee> i = lst.iterator();
+		while(i.hasNext()) {
+			Employee e = i.next();
+			if(e.getId()==Integer.parseInt(id)) {
+				i.remove();
+				return e;
+			}
+			
+		}
+		throw new UserNotFoundException("User Not Found");	
 	}
 }
