@@ -1,4 +1,4 @@
-package com.example.rest.webservices.controller;
+package com.example.resr.webservices.exceptions;
 
 import java.util.Date;
 

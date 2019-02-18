@@ -2,9 +2,15 @@ package com.example.rest.webservices.dto;
 
 import java.util.Date;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+@ApiModel(description="All Details about the Employee")
 public class Employee {
 	
+	@ApiModelProperty(notes="ID will be Primary Key")
 	public int id;
+	@ApiModelProperty(notes="Name Cannot be Empty")
 	public String empName;
 	public String location;
 	public String department;
